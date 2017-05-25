@@ -55,7 +55,8 @@ class OnesixnineSpider(CrawlSpider):
             if not image_year_foldernum_imageid_match:
                 continue
             item['folder_num'] = image_year_foldernum_imageid_match.group(2)
-            item['_id'] = image_year_foldernum_imageid_match.group(3)
+            image_local_id = image_year_foldernum_imageid_match.group(3)
+            item['_id'] = year + month_day + album_id + item['folder_num'] + image_local_id
             item['month_day'] = month_day
             item['album_id'] = album_id
             item['album_url'] = album_url
