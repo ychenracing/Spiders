@@ -15,6 +15,8 @@ SPIDER_MODULES = ['onesixnine.spiders']
 NEWSPIDER_MODULE = 'onesixnine.spiders'
 
 DEFAULT_OUTPUT_FOLDER = 'E:\\169ee'
+CANDIDATE_DEFAULT_OUTPUT_FOLDER = '~/169ee'
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'onesixnine (+http://www.yourdomain.com)'

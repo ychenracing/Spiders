@@ -16,5 +16,6 @@ class OnesixnineItem(scrapy.Item):
     year = scrapy.Field()  # 该图片上传的年份
     folder_num = scrapy.Field()  # 该图片是该年份的第几个相册
     month_day = scrapy.Field()  # 该相册是该年份的几月几日创建的
-    album_id = scrapy.Field()
     url = scrapy.Field()  # 该图片的url
+    album_id = scrapy.Field()
+    album_url = scrapy.Field()
