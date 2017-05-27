@@ -4,10 +4,11 @@
 import os
 import re
 
-from onesixnine.items import OnesixnineItem
 from scrapy.http import Request
-from scrapy.linkextractors.sgml import SgmlLinkExtractor
+from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
+
+from onesixnine.items import OnesixnineItem
 
 
 class OnesixnineSpider(CrawlSpider):
@@ -21,8 +22,8 @@ class OnesixnineSpider(CrawlSpider):
 
     image_year_foldernum_imageid_pattern = re.compile(r'http://724\.169pp\.net/169mm/(\d*?)/(\d*?)/(\d*?)\.[a-z]*?')
 
-    rules = (Rule(SgmlLinkExtractor(allow=(r'^http://www.169ee.com/[a-z]+$',))),
-             Rule(SgmlLinkExtractor(
+    rules = (Rule(LinkExtractor(allow=(r'^http://www.169ee.com/[a-z]+$',))),
+             Rule(LinkExtractor(
                  allow=(r'^http://www.169ee.com/[a-z]*?/20[0-9]*?/[0-9]*?/[0-9]*?\.html$',
                         r'^http://www.169ee.com/[a-z]*?/20[0-9]*?/[0-9]*?/\d*?_\d*?\.html$')),
                  callback='parse_album'))
