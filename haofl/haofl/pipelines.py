@@ -26,9 +26,9 @@ class HaoflPipeline(object):
                                          item['date'], item['view'], item['comment'], item['link']))
             self.conn.commit()
             if not self.cursor.rowcount:
-                print 'insert failed! item=', item
+                print('insert failed! item=%s' % item)
         except Exception as ex:
-            print 'insert error! ex=', ex, ', item=', item,
+            print('insert error! ex=%s, item=%s' % (ex, item))
 
     def __del__(self):
         if self.cursor:

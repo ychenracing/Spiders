@@ -35,9 +35,9 @@ def save_img(image_url, uid, picid):
         save_path = os.path.join(save_folder, uid + '_' + picid + file_name_ext)
         with open(save_path, 'wb') as fw:
             fw.write(response.content)
-        print uid + '_' + picid + file_name_ext, 'image saved!', image_url
+        print(uid + '_' + picid + file_name_ext + ' image saved!' + image_url)
     except IOError as e:
-        print 'save error！', e, image_url
+        print('save error！error=%s, image_url=%s' % (e, image_url))
 
 
 def save_images_in_album(album_url):
@@ -47,7 +47,7 @@ def save_images_in_album(album_url):
     # 解析出uid和picid，用于存储图片的名字
     uid_picid_match = uid_picid_pattern.search(album_url)
     if not uid_picid_match:
-    	return
+        return
     else:
         uid = uid_picid_match.group(1)
         picid = uid_picid_match.group(2)
@@ -62,13 +62,13 @@ def save_images_in_album(album_url):
 
     next_image = soup.select_one('div.pns.mlnv.vm.mtm.cl a.btn[title="下一张"]')
     if not next_image:
-    	return
+         return
     # 解析下一张图片的picid，防止重复爬取图片，不重复则抓取
     next_image_url = next_image['href']
     next_uid_picid_match = uid_picid_pattern.search(next_image_url)
     if not next_uid_picid_match:
-    	return
-	next_uid = next_uid_picid_match.group(1)
+        return
+    next_uid = next_uid_picid_match.group(1)
     next_picid = next_uid_picid_match.group(2)
     if not redis_con.hexists('kongjie', next_uid + ':' + next_picid):
         save_images_in_album(next_image_url)
