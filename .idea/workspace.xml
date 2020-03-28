@@ -31,10 +31,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Local" />
     <property name="nodejs_interpreter_path" value="node" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
@@ -97,7 +98,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1495981033163</updated>
-      <workItem from="1584885754119" duration="977000" />
+      <workItem from="1584885754119" duration="1241000" />
+      <workItem from="1584969816806" duration="150000" />
+      <workItem from="1585312944221" duration="168000" />
     </task>
     <task id="LOCAL-00001" summary="update to python3">
       <created>1496072830084</created>
@@ -117,10 +120,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="update to python3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="461" y="162" key="SettingsEditor" timestamp="1584885801288">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585313004346">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1584885801288" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585313004346" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1584969942472">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1584969942472" />
     <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1584885756757">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
