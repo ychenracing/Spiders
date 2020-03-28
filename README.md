@@ -30,6 +30,12 @@ Blog is here: [爬虫进阶：CrawlSpider爬取169ee全站美女图片](https://
 
 A spider using scrapy and selenium to crawl all candidate baidu wangpan download links, then preserves them in MySQL. It use CrawlSpider in scrapy to crawl the full site.
 
+### Running
+![running state](Spiders/images/flhhkkSpider_seleniumRunning.png)
+
+### Data
+![data state](Spiders/images/flhhkkSpider_data.png)
+
 Blog is here: TODO
 
 You can give me a star if they help you.
