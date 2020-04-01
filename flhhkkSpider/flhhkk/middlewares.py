@@ -7,12 +7,8 @@
 
 from scrapy import signals
 from scrapy.http import HtmlResponse
-from flhhkk.flhhkk_request import FlhhkkIndexPageRequest
-from flhhkk.flhhkk_request import FlhhkkItemPageRequest
 
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
+from flhhkk.flhhkk_request import FlhhkkRequest
 
 
 class FlhhkkSpiderMiddleware(object):
@@ -21,31 +17,13 @@ class FlhhkkSpiderMiddleware(object):
     # passed objects.
 
     def process_request(self, request, spider):
-        # 如果spider为SeleniumSpider的实例，并且request为SeleniumRequest的实例
-        # 那么该Request就认定为需要启用selenium来进行渲染html
-        # 控制浏览器打开目标链接
-        spider.browser.get(request.url)
+        if isinstance(request, FlhhkkRequest):
+            html = spider.scrapper.get(request.url).text
 
-        # 在构造渲染后的HtmlResponse之前，做一些事情
-        # 1.比如等待浏览器页面中的某个元素出现后，再返回渲染后的html；
-        # 2.比如将页面切换进iframe中的页面；
-        if isinstance(request, FlhhkkIndexPageRequest):
-            # 等待下一页出现
-            WebDriverWait(spider.browser, 600).until(
-                expected_conditions.presence_of_element_located(
-                    (By.XPATH, '//nav[@class="navigation pagination"]/div[@class="nav-links"]')))
-        elif isinstance(request, FlhhkkItemPageRequest):
-            # 等待要爬取的item出现
-            WebDriverWait(spider.browser, 600).until(
-                expected_conditions.presence_of_element_located(
-                    (By.XPATH, '//div[@class="article col-xs-12 col-sm-8 col-md-8"]')))
-
-        # 获取浏览器渲染后的html
-        html = spider.browser.page_source
-
-        # 构造Response
-        # 这个Response将会被你的爬虫进一步处理
-        return HtmlResponse(url=spider.browser.current_url, request=request, body=html.encode(), encoding="utf-8")
+            # 构造Response
+            # 这个Response将会被你的爬虫进一步处理
+            return HtmlResponse(url=request.url, request=request, body=html.encode(), encoding="utf-8")
+        return None
 
     @classmethod
     def from_crawler(cls, crawler):

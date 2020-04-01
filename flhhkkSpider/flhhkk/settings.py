@@ -33,7 +33,6 @@ DEFAULT_REQUEST_HEADERS = {
     'sec-fetch-mode': 'navigate',
     'sec-fetch-site': 'none',
     'upgrade-insecure-requests': '1',
-    'Cookie': '__cfduid=d7b22bd532dd50a8ef8b0d3518031b1ab1585373952; WEXu-zsdIyrH=.dHix8lm_Dhp; LGablMeB=u3AZi04F; SEdDmoj=4jhaS_P; UM_distinctid=1711fa7050380c-084a6d856fe059-f313f6d-1fa400-1711fa705045a5; CNZZDATA1262045663=2105562989-1585370143-https%253A%252F%252Fflhhkk.com%252F%7C1585370143; __tawkuuid=e::flhhkk.com::fJ/qLDsiC1G9JQOpTBK/poOcxOhw0GCffgu+UsKgYOd6AKsXY/Ca9iEEupGC8K2k::2; cf_clearance=4b2c32508211fe4773669c7eab2d8cab41438ffa-1585374318-0-150; TawkConnectionTime=0',
     'Host': 'https://flhhkk.com/',
     'Referer': 'https://flhhkk.com/page/2',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'
