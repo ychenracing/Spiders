@@ -49,3 +49,63 @@ Use L4 as a final acceptance gate, not as the inner development loop. Repeat L4 
 ### Principle
 
 Verification should produce new evidence. The goal is to establish final correctness with the minimum test scope that safely proves the current change; full validation is a final acceptance gate, not a per-edit ritual.
+
+## Natural-Language Task Entry and Context Governance
+
+These rules govern task entry, context loading, continuity, and handoff. They do not weaken explicit acceptance criteria, verification, security, data-integrity, business, economic, or repository-specific requirements.
+
+- Accept GitHub tasks stated directly in natural language. Do not require a fixed prompt, manually prepared template, branch name, PR number, or mandatory Issue when the facts can be resolved from the conversation and GitHub.
+- Use the PR body as dynamic state for ordinary single-PR work. Create and populate an Issue automatically only for genuinely multi-PR, long-lived phased/backlog work or when the user requests one.
+- GitHub live state is authoritative for branches, SHAs, commits, PRs, reviews, checks, and merge status. Chat history, memory, plans, summaries, and handoffs are leads, not current facts.
+- Search for matching open PRs, branches, and Issues before creating work. Continue an existing match in place; do not duplicate work.
+- Load the smallest authoritative context first: this file, `.github/CHATGPT_PROJECT_BRIEF.md` when present, the matching PR and diff, then directly related code, tests, configuration, and workflows. Expand only when evidence is insufficient, contradictory, or impact grows.
+- Do not load the full repository, chat history, all PRs/Issues/Actions, or large logs by default. Never lossy-compress prohibitions, AND/OR logic, thresholds, dates, versions, paths, branches, SHAs, exact results, risks, or unknowns.
+- If no local worktree is available, mark local path and working-tree fields as not applicable; never invent them.
+- Use `context-budget-router` and `conversation-continuity-guard` when available, while following this file regardless.
+
+## Continuous Execution
+
+Complex, multi-step, long-running, GitHub, batch, research, debugging, and multi-tool tasks default to continuous execution.
+
+- Continue while a safe, clear, executable next step remains.
+- Milestones, checkpoints, commits, pushes, PR creation, partial validation, progress updates, and prepared handoffs are not completion.
+- Do not stop because the conversation is long, many tools/files/logs were used, multiple milestones finished, the next phase is large, a handoff could be prepared, or non-required CI is pending.
+- Progress updates are non-blocking: after an update, continue without waiting for a reply. Do not ask the user to say “continue” when the next action is clear.
+- Do not claim remaining token, message, or context capacity without explicit accurate platform telemetry.
+
+## Non-Blocking Checkpoints and Recovery
+
+After a meaningful milestone:
+
+1. Save a coherent recoverable checkpoint.
+2. For GitHub work, refresh the PR body with current objective, completed/verified work, remaining work, exact verification, risks, unknowns, and next action.
+3. Commit and push an understandable state when appropriate, then verify remote head and PR state.
+4. Continue directly to the next executable item.
+
+A normal checkpoint must not end the task, emit a handoff as the final response, recommend switching chats, or require confirmation. For batch work, safely checkpoint one target and continue to the next; one blocked target does not end an actionable batch. While required checks are pending, perform other available work first; non-required long-running checks are not blockers.
+
+When context may be stale, re-read the authoritative repository, PR, head/base SHAs, commits, diff, reviews, checks, and remaining work; resolve discrepancies through read-only inspection, discard superseded narrative context, refresh state, and continue. If a prior handoff exists and the user says “continue”, “continue to completion”, or equivalent, re-verify live state and resume.
+
+## Handoff-Required Conditions
+
+Stop and produce a complete handoff only when further safe execution is actually blocked by at least one of:
+
+1. an explicit platform/tool hard limit or unavailable required tool;
+2. permissions, branch protection, required approval, or external authorization blocking all remaining work;
+3. a material user decision that cannot be inferred safely;
+4. a substantive live-state conflict that read-only verification cannot resolve;
+5. critical context actually lost and unrecoverable from authoritative sources;
+6. material correctness, security, privacy, data-integrity, economic, or irreversible risk;
+7. an explicit user request to stop or hand off.
+
+Task length, milestone/interaction counts, many files/logs/tools, a large remaining phase, an existing handoff, pending non-required CI, one blocked repository in a larger actionable batch, or unsupported concern about a future limit are not sufficient reasons.
+
+Before a required handoff, finish the smallest safe atomic action, save a recoverable checkpoint, refresh authoritative state, state the exact blocker, and provide a self-contained handoff with verified—not guessed—repository, branch, SHA, worktree, test, CI, commit, push, risk, and next-step information.
+
+## Completion and Git Safety
+
+End only when the objective and acceptance criteria are satisfied with necessary final verification, the user asks to stop, a true blocker prevents all remaining safe work, safety policy requires termination, or the environment cannot continue required tools. If `Remaining Work` contains a safe executable item, continue. Do not promise background completion.
+
+Without explicit authorization, do not run `reset`, `clean`, or `rebase`; force push or rewrite shared history; delete branches/worktrees; discard tracked, staged, unstaged, or untracked work; overwrite unrelated changes; or redo completed verified work.
+
+Before handoff, merge, or final completion, verify applicable live branch, HEAD, remote feature SHA, default-branch SHA, merge base, working state, commits, push state, reviews, checks, and exact test results. Mark unavailable fields as not verified or not applicable rather than guessing.
