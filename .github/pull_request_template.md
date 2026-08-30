@@ -44,6 +44,10 @@
 - Base SHA:
 - Head branch:
 - Head SHA:
+- Task bootstrap commit:
+- Verified default-branch baseline SHA:
+- Remote feature-branch head SHA:
+- Remote bootstrap verified: Yes / No
 - Related issue:
 - Last verified:
 

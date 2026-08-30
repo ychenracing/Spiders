@@ -109,3 +109,13 @@ End only when the objective and acceptance criteria are satisfied with necessary
 Without explicit authorization, do not run `reset`, `clean`, or `rebase`; force push or rewrite shared history; delete branches/worktrees; discard tracked, staged, unstaged, or untracked work; overwrite unrelated changes; or redo completed verified work.
 
 Before handoff, merge, or final completion, verify applicable live branch, HEAD, remote feature SHA, default-branch SHA, merge base, working state, commits, push state, reviews, checks, and exact test results. Mark unavailable fields as not verified or not applicable rather than guessing.
+
+## Remote Task Bootstrap
+
+These requirements make task state durable before implementation and at meaningful milestones. They supplement existing repository-specific business, security, quantitative, testing, CI, release, and Git safety rules and must never delete or weaken them.
+
+- After the minimum read-only verification and before any substantive modification, establish a remote task-start checkpoint. For a new task, create the feature branch from the verified remote default-branch SHA. Search for a matching PR, branch, or Issue first; when one exists, continue it in place, refresh the PR, push the current recoverable state, and verify the remote head before editing.
+- Prefer a structured empty bootstrap commit that records: Objective; Acceptance criteria; Included and excluded scope; Non-negotiable constraints; Default branch and baseline SHA; Feature branch; Related PR, branch, or Issue; Current verified state; Risks and unknowns; and Next action.
+- Push the bootstrap commit to the remote feature branch and verify the remote head SHA. Begin substantive modification only after that verification. If the environment cannot create an empty commit, a temporary branch-only `.github/task-bootstrap/<task-slug>.md` file is allowed and must be deleted before final merge.
+- At every formal checkpoint and important milestone, run the minimum necessary verification, commit a coherent atomic state, push it, verify the remote SHA, update the PR, and then continue. Chat, a local workspace, a local commit, or a temporary container alone is not a complete checkpoint. Do not create commits for trivial edits.
+- Never push secrets, unrelated changes, or an incomplete atomic modification. Do not push directly to the default branch or force-push without explicit authorization. If pushing is impossible, report the exact blocker and do not claim that a checkpoint is complete.
