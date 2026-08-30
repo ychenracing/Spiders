@@ -7,7 +7,7 @@ These repository-wide instructions apply to ChatGPT Work, Codex, and other codin
 - Accept GitHub tasks in natural language. Do not require a fixed prompt, manual template, branch name, PR number, or Issue when current facts can be resolved safely.
 - GitHub live state is authoritative for branches, SHAs, commits, PRs, reviews, checks, and merge status. Treat chat history, memory, plans, summaries, and handoffs only as leads.
 - Before creating work, search for a matching open PR, branch, or Issue and continue a unique match in place. Do not duplicate or redo verified work.
-- Use the PR body as dynamic state for ordinary single-PR work. Create an Issue only for genuinely multi-PR, long-lived phased or backlog work, or when the user requests one.
+- Use the PR body as dynamic state for ordinary single-PR work. Create and populate an Issue automatically only for genuinely multi-PR, long-lived phased or backlog work, or when the user requests one.
 - Load the smallest authoritative context first: applicable `AGENTS.md`, `.github/CHATGPT_PROJECT_BRIEF.md` when present, the matching PR and diff, then directly related code, tests, configuration, and workflows. Expand only when evidence is insufficient, contradictory, or the impact boundary grows.
 - Do not load the whole repository, conversation, all PRs/Issues/Actions, or large logs by default. Never lossy-compress prohibitions, exceptions, AND/OR logic, thresholds, dates, versions, paths, branches, SHAs, exact results, risks, or unknowns.
 - When no local worktree exists, mark local path and working-tree fields as not applicable; never invent them. Use `context-budget-router` and `conversation-continuity-guard` when available.
