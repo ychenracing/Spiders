@@ -1,0 +1,20 @@
+name: GPT-6 Astra public runner probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'codex/gpt6-astra-cloud-watch'
+    paths:
+      - '.github/workflows/gpt6-astra-runner-probe.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Confirm hosted runner startup
+        run: echo 'runner-ok'
